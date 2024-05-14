@@ -18,12 +18,12 @@ def argparse_option():
     parser.add_argument('--diffusion_iteration', type=int, default=100, help='optimization diffusion_iteration')
 
     # other setting
-    parser.add_argument('--RECT', action='store_true', default=True, help='RECT loss function')
-    parser.add_argument('--lambRECT', type=float, default=2, help='coefficient for the RECT loss function')
+    parser.add_argument('--GDC', action='store_true', default=True, help='RECT loss function')
+    parser.add_argument('--lamb', type=float, default=1, help='coefficient for the RECT loss function')
     parser.add_argument('--sigma', type=float, default=1, help='parameter of Gaussian Kernel')
     parser.add_argument('--sigmaDG', type=float, default=1, help='parameter of Gaussian Kernel in diffusion')
     parser.add_argument('--alpha', type=float, default=0.9, help='parameter of label propagation')
-    parser.add_argument('--alphaRECT', type=float, default=0.9, help='parameter of Graph diffusion')
+    parser.add_argument('--alphaGDC', type=float, default=0.9, help='parameter of Graph diffusion')
     parser.add_argument('--nearest', type=int, default=3, help='K nearest points')
     parser.add_argument('--k_nums', type=int, default=0,
                         help='K nearest points in diffusion if k==0 then full connection')
