@@ -148,8 +148,8 @@ class Learner(object):
                 rect_loss = torch.zeros(1, device=self.device)
                 if self.opt.GDC:
                     gdc_loss = self.mvm_loss.gdc(ol, ou, self.opt.k_nums, self.opt.diffusion_iteration,
-                                                   self.opt.alphaRECT,
-                                                   self.opt.sigmaDG, self.opt.scale)
+                                                   self.opt.alphaGDC,
+                                                   self.opt.sigmaGD, self.opt.scale)
                     dic["GDC loss"] = gdc_loss.item()
                 vidc_loss = self.mvm_loss.vidc(ol, ou, label, target, self.label_propagation, k)
                 dic["VIDC loss"] = semi_loss.item()
