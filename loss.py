@@ -48,7 +48,7 @@ class Loss(object):
         self.k = 0
         self.vskp_loss = []
 
-    def vskp(self, ol, ou, label, target, label_propagation, k, cls=8):
+    def vidc(self, ol, ou, label, target, label_propagation, k, cls=8):
         n = len(ol)
         label = label.cpu()
         num_labeled_data = ol[0].size(0)
@@ -91,7 +91,7 @@ class Loss(object):
         loss /= (k + 1)
         return loss
 
-    def rect(self, ol, ou, k_nums, iterations, alpha, sigma, scale=True):
+    def gdc(self, ol, ou, k_nums, iterations, alpha, sigma, scale=True):
         n = len(ol)
         num_labeled_data = ol[0].size(0)
         A_all = []
