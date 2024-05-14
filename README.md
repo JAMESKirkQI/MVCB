@@ -11,7 +11,7 @@ This repository is the PyTorch source code implementation of
 for fast training and evaluating the MVDC model.
 
 <div align="center">
-<img src="./img/illustrate.svg" width=85% />
+<img src="./illustrate.svg" width=85% />
 </div>
 We propose a View-Individual Description Codebook (VIDC) module for Multi-View Diffusion Codebook (MVDC), a plug-and-play solution to sustain and absorb new information continually. Serving as a memory bank, the VIDC can be tuned by observing the correlations within an expansive pool of unlabeled data, inferred via label propagation, circumventing the need for costly annotations. Considering the VIDC module's intrinsic limitation in ensuring cross-view Graph Diffusion Consistency(GDC), we generate the final consensus graph by diffusing the similarity matrix in all views.
 
