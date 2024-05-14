@@ -146,14 +146,14 @@ class Learner(object):
                 ou, _ = self.projector(xu)
                 dic = {}
                 rect_loss = torch.zeros(1, device=self.device)
-                if self.opt.RECT:
-                    rect_loss = self.mvm_loss.rect(ol, ou, self.opt.k_nums, self.opt.diffusion_iteration,
+                if self.opt.GDC:
+                    gdc_loss = self.mvm_loss.gdc(ol, ou, self.opt.k_nums, self.opt.diffusion_iteration,
                                                    self.opt.alphaRECT,
                                                    self.opt.sigmaDG, self.opt.scale)
-                    dic["RECT loss"] = rect_loss.item()
-                semi_loss = self.mvm_loss.vskp(ol, ou, label, target, self.label_propagation, k)
-                dic["Semi loss"] = semi_loss.item()
-                loss = semi_loss + self.opt.lambRECT * rect_loss
+                    dic["GDC loss"] = gdc_loss.item()
+                vidc_loss = self.mvm_loss.vidc(ol, ou, label, target, self.label_propagation, k)
+                dic["VIDC loss"] = semi_loss.item()
+                loss = vidc_loss + self.opt.lamb * gdc_loss
                 dic["loss"] = loss.item()
                 self.optimizer.zero_grad()
                 loss.backward(retain_graph=True)
