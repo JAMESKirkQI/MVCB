@@ -7,7 +7,7 @@
 [//]: # (<font size="10"><b><center>Multi-view Semi-supervised Continual Learning via Graph Diffusion Consistency</center></b></font>)
 
 This repository is the PyTorch source code implementation of 
-[Contrastive Semi-supervised Continual Learning via Graph Diffusion Consistency](). This is a demo code to illustrate the basic motivation 
+[Multi-view Semi-supervised Continual Learning via Graph Diffusion Consistency](). This is a demo code to illustrate the basic motivation 
 for fast training and evaluating the MVDC model.
 
 <div align="center">
