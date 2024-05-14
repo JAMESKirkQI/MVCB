@@ -1,10 +1,10 @@
 ![Python 3.8](https://img.shields.io/badge/python-3.8-green.svg)
 
-# Contrastive Semi-supervised Continual Learning via Graph Diffusion Consistency
+# Multi-view Semi-supervised Continual Learning via Graph Diffusion Consistency
 
 ---
 
-[//]: # (<font size="10"><b><center>Contrastive Semi-supervised Continual Learning via Graph Diffusion Consistency</center></b></font>)
+[//]: # (<font size="10"><b><center>Multi-view Semi-supervised Continual Learning via Graph Diffusion Consistency</center></b></font>)
 
 This repository is the PyTorch source code implementation of 
 [Contrastive Semi-supervised Continual Learning via Graph Diffusion Consistency](). This is a demo code to illustrate the basic motivation 
