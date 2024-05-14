@@ -1,13 +1,13 @@
 ![Python 3.8](https://img.shields.io/badge/python-3.8-green.svg)
 
-# Multi-view Semi-supervised Continual Learning via Graph Diffusion Consistency
+# Multi-View Semi-Supervised Continual Learning via Graph Diffusion Consistency
 
 ---
 
-[//]: # (<font size="10"><b><center>Multi-view Semi-supervised Continual Learning via Graph Diffusion Consistency</center></b></font>)
+[//]: # (<font size="10"><b><center>Multi-View Semi-Supervised Continual Learning via Graph Diffusion Consistency</center></b></font>)
 
 This repository is the PyTorch source code implementation of 
-[Multi-view Semi-supervised Continual Learning via Graph Diffusion Consistency](). This is a demo code to illustrate the basic motivation 
+[Multi-View Semi-Supervised Continual Learning via Graph Diffusion Consistency](). This is a demo code to illustrate the basic motivation 
 for fast training and evaluating the MVDC model.
 
 <div align="center">
