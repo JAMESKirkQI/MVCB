@@ -60,4 +60,9 @@ Organize the file in root dir folder as follows:
 python main.py
 ```
 
-Thanks for your effort and time to review our paper.
+### Ablation
+
+| $\mathcal{L}_\text{VSKR}$  | $\mathcal{L}_\text{RECT}$ | ACC |FGT|
+|:--------------------------:|:-------------------------:|:-----------:|:-----------:|
+| ✓                          |                           |   88.96     |5.51     |
+| ✓                          | ✓                         |   89.01     |88.96     |

@@ -32,7 +32,7 @@ class Learner(object):
         self.MVCC_loss = Loss(opt, device)
         num_tasks = len(self.unlabeled_dataloader)
         self.acc_array = np.zeros((num_tasks, num_tasks))
-        self.label_propagation = LabelPropagation(k=400, alpha=0.9, clamp=False, normalize=True)
+        self.label_propagation = LabelPropagation(k=self.opt.lp_iteration, alpha=0.9, clamp=False, normalize=True)
         # self.writer = SummaryWriter("logs")
 
     def compute_avg_fgt(self):
@@ -135,8 +135,6 @@ class Learner(object):
             test_acc.append(correct / total)
         print("test acc:{}".format(sum(test_acc) / n))
 
-        # self.test(10000)
-
         counter = 0
         ACC = []
         for k, (xu, target) in enumerate(self.unlabeled_dataloader):
@@ -152,7 +150,7 @@ class Learner(object):
                                                    self.opt.sigmaGD, self.opt.scale)
                     dic["GDC loss"] = gdc_loss.item()
                 vidc_loss = self.MVCC_loss.vidc(ol, ou, label, target, self.label_propagation, k)
-                dic["VIDC loss"] = semi_loss.item()
+                dic["VIDC loss"] = vidc_loss.item()
                 loss = vidc_loss + self.opt.lamb * gdc_loss
                 dic["loss"] = loss.item()
                 self.optimizer.zero_grad()

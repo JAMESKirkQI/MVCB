@@ -46,7 +46,7 @@ class Loss(object):
         self.opt = opt
         self.device = device
         self.k = 0
-        self.vskp_loss = []
+        self.vidc_loss = []
 
     def vidc(self, ol, ou, label, target, label_propagation, k, cls=8):
         n = len(ol)
@@ -57,18 +57,14 @@ class Loss(object):
         Yxu = torch.nn.functional.one_hot(target, num_classes=cls)
         Y = torch.concat((Yxl, Yxu), dim=0).cpu()
         mask = torch.cat([torch.ones(num_labeled_data), torch.zeros(num_unlabeled_data)]).bool()
-        vskp_loss = 0
+        vidc_loss = 0
         vote = []
         for v in range(n):
             Xv = torch.concat((ol[v], ou[v]), dim=0).clone().detach().cpu()
             knn_g = dgl.knn_graph(Xv, 3, exclude_self=True)
             new_labels = label_propagation(knn_g, Y, mask)
-
-            # Yv = torch.zeros_like(Fv)
-            # Yv[torch.arange(len(Fv)), Fv.argmax(1)] = 1
             Yv = new_labels[num_labeled_data:, :]
             vote.append(Yv)
-
         result = sum(vote)
         _, predicted = result.max(1)
         Cv = torch.zeros([num_labeled_data, num_unlabeled_data]).to(self.device)
@@ -78,15 +74,15 @@ class Loss(object):
 
         for v in range(n):
             ouv = ou[v].clone().detach()
-            vskp_loss += self.mse(ouv.t(), ol[v].t() @ Cv)
-        vskp_loss /= n
+            vidc_loss += self.mse(ouv.t(), ol[v].t() @ Cv)
+        vidc_loss /= n
 
         if self.k == k:
-            self.vskp_loss.append(vskp_loss)
+            self.vidc_loss.append(vidc_loss)
             self.k += 1
         w = omega(k + 1)
         loss = 0
-        for (i, lo) in enumerate(self.vskp_loss):
+        for (i, lo) in enumerate(self.vidc_loss):
             loss += w[i] * lo
         loss /= (k + 1)
         return loss
@@ -98,7 +94,7 @@ class Loss(object):
         edges = []
         ES = []
         similarities = []
-        rect_loss = torch.zeros(1, device=self.device)
+        gdc_loss = torch.zeros(1, device=self.device)
         for v in range(n):
             Xv = torch.concat((ol[v], ou[v]), dim=0)
             bs = Xv.shape[0]
@@ -125,10 +121,10 @@ class Loss(object):
                 break
             A_all = A_tmp.clone()
         A_avg = torch.mean(A_all, dim=0).detach()
-        # compute the RECT loss
+        # compute the GDC loss
         for i in range(n):
             mask = torch.ones_like(edges[i], device=self.device) - torch.eye(edges[i].shape[0], device=self.device)
             bs = mask.shape[0]
             A_avg = mask * A_avg
-            rect_loss += torch.sum((ES[i] - A_avg) ** 2) / (bs * (bs - 1))
-        return rect_loss / n
+            gdc_loss += torch.sum((ES[i] - A_avg) ** 2) / (bs * (bs - 1))
+        return gdc_loss / n
