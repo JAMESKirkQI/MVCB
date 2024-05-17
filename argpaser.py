@@ -8,7 +8,7 @@ def argparse_option():
     # parser.add_argument('--epochs', type=int, default=50, help='number of training epochs')
 
     # optimization
-    parser.add_argument('--lr', type=float, default=2e-3, help='learning rate')
+    parser.add_argument('--lr', type=float, default=1e-3, help='learning rate')
     parser.add_argument('--weight_decay', type=float, default=1e-5, help='weight decay')
 
     # model dataset
