@@ -20,7 +20,7 @@ def argparse_option():
 
     # other setting
     parser.add_argument('--GDC', action='store_true', default=True, help='RECT loss function')
-    parser.add_argument('--lamb', type=float, default=1, help='coefficient for the RECT loss function')
+    parser.add_argument('--lamb', type=float, default=1.4, help='coefficient for the RECT loss function')
     parser.add_argument('--sigma', type=float, default=1, help='parameter of Gaussian Kernel')
     parser.add_argument('--sigmaGD', type=float, default=1, help='parameter of Gaussian Kernel in diffusion')
     parser.add_argument('--alpha', type=float, default=0.9, help='parameter of label propagation')
