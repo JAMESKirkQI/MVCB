@@ -60,7 +60,7 @@ Organize the file in root dir folder as follows:
 python main.py
 ```
 
-### Ablation
+### Ablation in uiuc
 
 | $\mathcal{L}_\text{VIDC}$  | $\mathcal{L}_\text{GDC}$ | ACC |FGT|
 |:--------------------------:|:-------------------------:|:-----------:|:-----------:|
