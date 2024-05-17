@@ -29,7 +29,7 @@ def argparse_option():
     parser.add_argument('--k_nums', type=int, default=0,
                         help='K nearest points in diffusion if k==0 then full connection')
     parser.add_argument('--scale', action='store_true', default=True, help='K nearest points')
-    parser.add_argument('--seed', default=0, type=int, help='for reproducibility')
+    parser.add_argument('--seed', default=1, type=int, help='for reproducibility')
 
     opt = parser.parse_args()
 
