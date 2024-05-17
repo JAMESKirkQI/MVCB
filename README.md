@@ -62,7 +62,8 @@ python main.py
 
 ### Ablation
 
-| $\mathcal{L}_\text{VSKR}$  | $\mathcal{L}_\text{RECT}$ | ACC |FGT|
+| $\mathcal{L}_\text{VIDC}$  | $\mathcal{L}_\text{GDC}$ | ACC |FGT|
 |:--------------------------:|:-------------------------:|:-----------:|:-----------:|
-| ✓                          |                           |   88.96     |5.51     |
-| ✓                          | ✓                         |   89.01     |88.96     |
+| ✓                          |                           |   88.96     |5.51        |
+| ✓                          | ✓                         |   89.01     |4.76        |
+ 
