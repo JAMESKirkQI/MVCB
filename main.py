@@ -11,7 +11,6 @@ from projector import Projector
 # os.environ["WANDB_API_KEY"] = 'KEY'
 # os.environ["WANDB_MODE"] = "offline"
 
-# ssh -fgN -L 16006:127.0.0.1:6006 honestws@192.168.0.101
 if __name__ == '__main__':
     wandb.login(key="your wandb key")
     device = 'cuda:0' if torch.cuda.is_available() else 'cpu'
