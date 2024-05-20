@@ -20,7 +20,7 @@ def argparse_option():
 
     # other setting
     parser.add_argument('--GDC', action='store_true', default=True, help='RECT loss function')
-    parser.add_argument('--lamb', type=float, default=1.4, help='coefficient for the RECT loss function')
+    parser.add_argument('--lamb', type=float, default=1.6, help='coefficient for the RECT loss function')
     parser.add_argument('--sigma', type=float, default=1, help='parameter of Gaussian Kernel')
     parser.add_argument('--sigmaGD', type=float, default=1, help='parameter of Gaussian Kernel in diffusion')
     parser.add_argument('--alpha', type=float, default=0.9, help='parameter of label propagation')
@@ -29,7 +29,7 @@ def argparse_option():
     parser.add_argument('--k_nums', type=int, default=0,
                         help='K nearest points in diffusion if k==0 then full connection')
     parser.add_argument('--scale', action='store_true', default=True, help='K nearest points')
-    parser.add_argument('--seed', default=1, type=int, help='for reproducibility')
+    parser.add_argument('--seed', default=10, type=int, help='for reproducibility')
 
     opt = parser.parse_args()
 
