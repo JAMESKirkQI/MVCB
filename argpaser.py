@@ -16,7 +16,7 @@ def argparse_option():
                         choices=['scene', 'uiuc', 'mit', 'cifar', 'caltech'], help='dataset')
     parser.add_argument('--iteration', type=int, default=150, help='optimization iteration')
     parser.add_argument('--lp_iteration', type=int, default=400, help='optimization lp_iteration')
-    parser.add_argument('--diffusion_iteration', type=int, default=100, help='optimization diffusion_iteration')
+    parser.add_argument('--diffusion_iteration', type=int, default=50, help='optimization diffusion_iteration')
 
     # other setting
     parser.add_argument('--GDC', action='store_true', default=True, help='RECT loss function')
