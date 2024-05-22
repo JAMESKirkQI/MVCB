@@ -46,9 +46,9 @@ class Loss(object):
         self.opt = opt
         self.device = device
         self.k = 0
-        self.vidc_loss = []
+        self.vscb_loss = []
 
-    def vidc(self, ol, ou, label, target, label_propagation, k, cls=8):
+    def vscb(self, ol, ou, label, target, label_propagation, k, cls=8):
         n = len(ol)
         label = label.cpu()
         num_labeled_data = ol[0].size(0)
@@ -57,7 +57,7 @@ class Loss(object):
         Yxu = torch.nn.functional.one_hot(target, num_classes=cls)
         Y = torch.concat((Yxl, Yxu), dim=0).cpu()
         mask = torch.cat([torch.ones(num_labeled_data), torch.zeros(num_unlabeled_data)]).bool()
-        vidc_loss = 0
+        vscb_loss = 0
         vote = []
         for v in range(n):
             Xv = torch.concat((ol[v], ou[v]), dim=0).clone().detach().cpu()
@@ -74,15 +74,15 @@ class Loss(object):
 
         for v in range(n):
             ouv = ou[v].clone().detach()
-            vidc_loss += self.mse(ouv.t(), ol[v].t() @ Cv)
-        vidc_loss /= n
+            vscb_loss += self.mse(ouv.t(), ol[v].t() @ Cv)
+        vscb_loss /= n
 
         if self.k == k:
-            self.vidc_loss.append(vidc_loss)
+            self.vscb_loss.append(vscb_loss)
             self.k += 1
         w = omega(k + 1)
         loss = 0
-        for (i, lo) in enumerate(self.vidc_loss):
+        for (i, lo) in enumerate(self.vscb_loss):
             loss += w[i] * lo
         loss /= (k + 1)
         return loss
