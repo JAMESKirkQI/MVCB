@@ -1,19 +1,19 @@
 ![Python 3.8](https://img.shields.io/badge/python-3.8-green.svg)
 
-# Multi-view Semi-supervised Continual Learning via Graph Diffusion Consistency
+# Fight Forgetting via Multiple Views with Inefficient Annotations
 
 ---
 
-[//]: # (<font size="10"><b><center>Multi-view Semi-supervised Continual Learning via Graph Diffusion Consistency</center></b></font>)
+[//]: # (<font size="10"><b><center>Fight Forgetting via Multiple Views with Inefficient Annotations</center></b></font>)
 
 This repository is the PyTorch source code implementation of 
-[Multi-view Semi-supervised Continual Learning via Graph Diffusion Consistency](). This is a demo code to illustrate the basic motivation 
-for fast training and evaluating the MVDC model.
+[Fight Forgetting via Multiple Views with Inefficient Annotations](). This is a demo code to illustrate the basic motivation 
+for fast training and evaluating the MVCB model.
 
 <div align="center">
 <img src=https://github.com/JAMESKirkQI/MVDC/blob/master/illustrate.svg width=85% />
 </div>
-We propose a View-Individual Description Codebook (VIDC) module for Multi-View Diffusion Codebook (MVDC), a plug-and-play solution to sustain and absorb new information continually. Serving as a memory bank, the VIDC can be tuned by observing the correlations within an expansive pool of unlabeled data, inferred via label propagation, circumventing the need for costly annotations. Considering the VIDC module's intrinsic limitation in ensuring cross-view Graph Diffusion Consistency(GDC), we generate the final consensus graph by diffusing the similarity matrix in all views.
+We propose a View-Specific Codebook (VSCB) module for Multi-View Codebook (MVCB), a plug-and-play solution to sustain and absorb new information continually. Serving as a memory bank, the VIDC can be tuned by observing the correlations within an expansive pool of unlabeled data, inferred via label propagation, circumventing the need for costly annotations. Considering the VSCB module's intrinsic limitation in ensuring cross-view Graph Diffusion Consistency (GDC), we generate the final consensus graph by diffusing the similarity matrix in all views.
 
 ## Usage
 
@@ -62,8 +62,7 @@ python main.py
 
 ### Ablation in uiuc
 
-| $\mathcal{L}_\text{VIDC}$  | $\mathcal{L}_\text{GDC}$ | ACC |FGT|
-|:--------------------------:|:-------------------------:|:-----------:|:-----------:|
-| ✓                          |                           |   87.52     |6.21        |
-| ✓                          | ✓                         |   88.26     |5.33        |
- 
+| $\mathcal{L}_\text{VSCB}$ | $\mathcal{L}_\text{GDC}$ | ACC   | FGT  |
+|:-------------------------:|:------------------------:|:-----:|:----:|
+| ✓                         |                          | 87.52 | 6.21 |
+| ✓                         | ✓                        | 88.26 | 5.33 |
